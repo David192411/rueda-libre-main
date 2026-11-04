@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -6,12 +6,9 @@
     <meta name="description" content="Rueda Libre - Alquiler de bicicletas y recorridos guiados en Medellín.">
     <title>Rueda Libre | Alquiler de bicicletas en Medellín</title>
 
-    <!-- Google Fonts: Montserrat (700) y Open Sans (400, 600) (MiniReto 9) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
-    <!-- Hoja de estilos externa (MiniReto 9) -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -28,54 +25,130 @@
     </header>
 
     <main>
-        <section>
-            <h2>¿Quiénes somos?</h2>
-            <p>Somos tu mejor opción para recorrer la ciudad en bicicleta. Consulta nuestras <a href="paginas/tarifas.html">tarifas de alquiler de bicicletas</a> o revisa los detalles en la sección <a href="#encuentranos">Encuéntranos en nuestro punto de atención</a>.</p>
-            <img src="Imagenes/portada.jpg" alt="Persona disfrutando un recorrido en bicicleta por la ciudad" class="portada-img">
+        <!-- Portada en 2 columnas (Grid) -->
+        <section class="portada-grid">
+            <div>
+                <h2>¿Quiénes somos?</h2>
+                <p>Somos tu mejor opción para recorrer la ciudad en bicicleta. Consulta nuestras <a href="paginas/tarifas.html">tarifas de alquiler de bicicletas</a> o revisa los detalles en la sección <a href="#encuentranos">Encuéntranos en nuestro punto de atención</a>.</p>
+                <a href="paginas/reservas.html" class="btn-cta">Reservar bicicleta</a>
+            </div>
+            <div>
+                <img src="Imagenes/portada.jpg" alt="Persona disfrutando un recorrido en bicicleta por la ciudad" class="portada-img">
+            </div>
         </section>
 
+        <!-- Galería de Rutas Guiadas (MiniReto 3: 3 columnas en escritorio) -->
         <section>
-            <h2>Nuestros servicios</h2>
+            <h2>Nuestras Rutas Guiadas</h2>
+            <div class="rutas-grid">
+                <article class="tarjeta">
+                    <div class="tarjeta-cuerpo">
+                        <h3>Río y Parques</h3>
+                        <p>Recorrido plano y relajante por los parques principales de la ciudad.</p>
+                        <p><strong>Nivel:</strong> Fácil (12 km)</p>
+                        <img src="Imagenes/cicla rio.png" alt="Recorrido Río y Parques">
+                    </div>
+                    <a href="paginas/reservas.html" class="btn-cta">Reservar ruta</a>
+                </article>
 
-            <article class="tarjeta">
-                <h3>Alquiler de bicicletas</h3>
-                <p>Ofrecemos bicicletas urbanas, de montaña y eléctricas para moverte a tu ritmo. Cada alquiler <strong>incluye casco y candado</strong> para tu seguridad.</p>
-                <img src="Imagenes/imagenes4.jpeg" alt="Bicicleta urbana lista para alquilar en la tienda">
-            </article>
+                <article class="tarjeta">
+                    <div class="tarjeta-cuerpo">
+                        <h3>Sabores de Barrio</h3>
+                        <p>Disfruta de la gastronomía local y cultura urbana en dos ruedas.</p>
+                        <p><strong>Nivel:</strong> Medio (18 km)</p>
+                        <img src="Imagenes/imagenes.jpeg" alt="Recorrido Sabores de Barrio">
+                    </div>
+                    <a href="paginas/reservas.html" class="btn-cta">Reservar ruta</a>
+                </article>
 
-            <!-- Tarjeta con etiqueta "Nuevo" anclada (MiniReto 12) -->
-            <article class="tarjeta">
-                <span class="badge-nuevo">Nuevo</span>
-                <h3>Bicicletas Eléctricas y Recorridos Guiados</h3>
-                <p>Descubre los mejores rincones de la ciudad acompañado por guías locales expertos. Puedes ver los detalles en la página de <a href="paginas/tarifas.html#recorridos">recorridos guiados disponibles</a>.</p>
-                <img src="Imagenes/Ruta paseo.jpg" alt="Grupo de ciclistas participando en un recorrido guiado">
-            </article>
-
-            <article class="tarjeta">
-                <h3>Taller básico</h3>
-                <p>Te ayudamos con despinches, ajuste de frenos y mantenimiento rápido para que sigas rodando sin inconvenientes.</p>
-            </article>
-
-            <p><a href="paginas/reservas.html" class="btn-cta">Ir al formulario de reserva de bicicletas</a></p>
+                <article class="tarjeta">
+                    <div class="tarjeta-cuerpo">
+                        <h3>Reto Las Palmas</h3>
+                        <p>Un desafío de alta montaña para ciclistas experimentados.</p>
+                        <p><strong>Nivel:</strong> Difícil (25 km)</p>
+                        <img src="Imagenes/Cicla las Palmas.png" alt="Recorrido Reto Las Palmas">
+                    </div>
+                    <a href="paginas/reservas.html" class="btn-cta">Reservar ruta</a>
+                </article>
+            </div>
         </section>
 
+        <!-- Sección "Nuestra flota" en Cuadrícula Grid Adaptable (MiniReto 2) -->
         <section>
-            <h2>Beneficios de alquilar con nosotros</h2>
-            <ul>
-                <li>Bicicletas en excelente estado técnico.</li>
-                <li>Flexibilidad de horarios y tarifas accesibles.</li>
-                <li>Atención personalizada y recomendaciones de rutas.</li>
-            </ul>
-        </section>
+            <h2>Nuestra Flota</h2>
+            <div class="flota-grid">
+                <article class="tarjeta">
+                    <div class="tarjeta-cuerpo">
+                        <h3>Urbana Clásica</h3>
+                        <p>Cómoda y liviana para las ciclorrutas.</p>
+                        <p class="precio">$10.000 / hora</p>
+                        <img src="Imagenes/cicla ruta.jpeg" alt="Bicicleta Urbana Clásica">
+                    </div>
+                    <a href="paginas/reservas.html" class="btn-cta">Reservar</a>
+                </article>
 
-        <section>
-            <h2>¿Cómo alquilar?</h2>
-            <ol>
-                <li>Elige el tipo de bicicleta que prefieras.</li>
-                <li>Selecciona el tiempo de alquiler o el recorrido guiado.</li>
-                <li>Presenta tu documento de identidad y realiza el pago.</li>
-                <li>¡Recibe tu casco, candado y empieza a rodar!</li>
-            </ol>
+                <article class="tarjeta">
+                    <div class="tarjeta-cuerpo">
+                        <h3>Urbana Plegable</h3>
+                        <p>Se dobla en segundos; ideal para combinar con el metro.</p>
+                        <p class="precio">$12.000 / hora</p>
+                        <img src="Imagenes/cicla Plegable.jpeg" alt="Bicicleta Urbana Plegable">
+                    </div>
+                    <a href="paginas/reservas.html" class="btn-cta">Reservar</a>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="tarjeta-cuerpo">
+                        <h3>Montaña Trail</h3>
+                        <p>Suspensión delantera y 21 cambios para las subidas.</p>
+                        <p class="precio">$15.000 / hora</p>
+                        <img src="Imagenes/cicla montaña.jpeg" alt="Bicicleta Montaña Trail">
+                    </div>
+                    <a href="paginas/reservas.html" class="btn-cta">Reservar</a>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="tarjeta-cuerpo">
+                        <h3>Gravel Aventura</h3>
+                        <p>Para rutas mixtas de asfalto y destapado.</p>
+                        <p class="precio">$18.000 / hora</p>
+                        <img src="Imagenes/cicla gravel.jpeg" alt="Bicicleta Gravel Aventura">
+                    </div>
+                    <a href="paginas/reservas.html" class="btn-cta">Reservar</a>
+                </article>
+
+                <article class="tarjeta">
+                    <span class="badge-nuevo">Nuevo</span>
+                    <div class="tarjeta-cuerpo">
+                        <h3>Eléctrica Urbana</h3>
+                        <p>Asistencia eléctrica con 45 km de autonomía.</p>
+                        <p class="precio">$25.000 / hora</p>
+                        <img src="Imagenes/Cicla Eléctrica.png" alt="Bicicleta Eléctrica Urbana">
+                    </div>
+                    <a href="paginas/reservas.html" class="btn-cta">Reservar</a>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="tarjeta-cuerpo">
+                        <h3>Infantil</h3>
+                        <p>Para niños de 6 a 10 años.</p>
+                        <p class="precio">$8.000 / hora</p>
+                        <img src="Imagenes/imagenes5.jpeg" alt="Bicicleta Infantil">
+                    </div>
+                    <a href="paginas/reservas.html" class="btn-cta">Reservar</a>
+                </article>
+
+                <!-- Séptimo modelo (MiniReto 2) -->
+                <article class="tarjeta">
+                    <div class="tarjeta-cuerpo">
+                        <h3>Tándem</h3>
+                        <p>Para dos personas; perfecta para pasear en pareja.</p>
+                        <p class="precio">$20.000 / hora</p>
+                        <img src="img/tandem.jpg" alt="Bicicleta Tándem para dos personas">
+                    </div>
+                    <a href="paginas/reservas.html" class="btn-cta">Reservar</a>
+                </article>
+            </div>
         </section>
 
         <section id="encuentranos">
@@ -86,14 +159,28 @@
         </section>
     </main>
 
-    <!-- Enlace flotante a WhatsApp (MiniReto 12) -->
     <a href="https://wa.me/573000000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
         💬 WhatsApp
     </a>
 
+    <!-- Footer Flexbox en 3 bloques (MiniReto 1) -->
     <footer>
-        <p>Rueda Libre - hola@ruedalibre.example - 2026</p>
+        <div>
+            <h3>Rueda Libre</h3>
+            <p>Alquiler de bicicletas y recorridos guiados en Medellín.</p>
+        </div>
+        <div>
+            <h3>Contacto</h3>
+            <p>Correo: <a href="mailto:hola@ruedalibre.example" style="color:var(--crema);">hola@ruedalibre.example</a></p>
+            <p>Teléfono: +57 300 000 0000</p>
+        </div>
+        <div>
+            <h3>Horario</h3>
+            <p>Lun-Vie: 7:00 a.m. - 7:00 p.m.</p>
+            <p>Sáb-Dom: 6:00 a.m. - 2:00 p.m.</p>
+        </div>
     </footer>
 
 </body>
 </html>
+

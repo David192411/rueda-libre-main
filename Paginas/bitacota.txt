@@ -1,81 +1,48 @@
 Plaintext
 
 ==================================================
-BITÁCORA DE TRABAJO Y CIERRE SEMANAL - RUEDA LIBRE (v1.0)
+BITÁCORA DE TRABAJO - RUEDA LIBRE (v1.5 MOBILE-FIRST)
 ==================================================
 
-1. ANÁLISIS DE LA PETICIÓN EN DEVTOOLS (NETWORK):
---------------------------------------------------
-- URL completa: file:///home/cohorte8/Downloads/rueda-libre-main/Index.html
-- Protocolo: file: (o HTTP/1.1 con Live Server)
-- Host: localhost
-- Puerto: N/A (o 5500)
-- Ruta local: /home/cohorte8/Downloads/rueda-libre-main/Index.html
-- Método de la petición: GET
-- Código de estado: 200 OK
-- Prueba 404: file:///home/cohorte8/Downloads/rueda-libre-main/promociones.html -> 404 Not Found
+1. COMPORTAMIENTO DEL ENCABEZADO Y EL PIE SEGÚN ANCHO DE PANTALLA (MINIRETO 1):
+-------------------------------------------------------------------------------
+- En pantallas estrechas (< 768px / Celular):
+  * El encabezado se organiza verticalmente (flex-direction: column) con el nombre del negocio arriba y el menú centrado debajo. Los enlaces se ajustan mediante flex-wrap sin desbordar.
+  * El pie de página se muestra en una sola columna vertical apilando marca, contacto y horario.
+- En pantallas anchas (>= 768px / Tablet y Escritorio):
+  * El encabezado pasa a una sola fila (flex-direction: row) con space-between, ubicando la marca a la izquierda y la navegación a la derecha alineados verticalmente.
+  * El pie muestra sus 3 bloques en fila (flex-direction: row) alineados por arriba y distribuidos homogéneamente.
 
 
-2. COMPROBACIÓN DE HERENCIA EN CSS (MINIRETO 9):
---------------------------------------------------
-- Propiedad que SÍ se hereda: font-family y color. 
-  Comprobación: Declarados en <body> y heredados automáticamente por <p>, <li>, <dt> y <dd> sin necesidad de redefinirlos.
-- Propiedad que NO se hereda: margin, padding y border.
-  Comprobación: Asignar padding: 2rem al <body> no aplica padding interno a los párrafos ni tarjetas.
+2. REGISTRO DE COLUMNAS OBSERVADAS EN "NUESTRA FLOTA" (MINIRETO 2):
+--------------------------------------------------------------------
+Configuración utilizada: grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) con gap de 2rem.
+- A 1280 px: Se observan 4 columnas por fila (y el 7.º modelo "Tándem" se ubica al inicio de la segunda fila automáticamente).
+- A 900 px: Se observan 3 columnas por fila (con el 7.º modelo centrado al final).
+- A 500 px: Se observa 1 columna por fila (todas las tarjetas apiladas fluidamente).
 
 
-3. EXPLICACIÓN DEL CONFLICTO DE ESPECIFICIDAD EN EL MENÚ (MINIRETO 10):
+3. JUSTIFICACIÓN DE DECISIONES DE LAYOUT - FLEXBOX VS GRID (MINIRETO 3):
 -------------------------------------------------------------------------
-- Regla del compañero:
-    #menu a { color: var(--gris-asfalto); }   --> Especificidad: (0, 1, 0, 1) [1 ID, 1 Elemento]
-    .activo { color: var(--verde-ruta); }    --> Especificidad: (0, 0, 1, 0) [1 Clase]
-
-- Causa del problema:
-  La regla con el ID `#menu a` tiene un valor de especificidad superior (101 puntos) respecto a la clase `.activo` (10 puntos). Por orden de cascada y especificidad, el navegador ignora `.activo`.
-
-- Solución aplicada (sin usar !important ni inline styles):
-  Se combinaron los selectores a `#menu a.activo`, cuya especificidad aumenta a (0, 1, 1, 1) [1 ID, 1 Clase, 1 Elemento = 111 puntos], ganando el conflicto limpiamente.
+1. Encabezado (<header>): FLEXBOX. Se eligió porque es una distribución lineal (1 dimensión) donde los elementos solo necesitan alineación y separación a los extremos.
+2. Pie de página (<footer>): FLEXBOX. Estructura unidimensional que requería apilar los tres bloques en móvil y disponerlos horizontalmente desde tablet.
+3. Portada (Inicio): GRID. Estructura bidimensional con dos columnas de igual tamaño (1fr 1fr) que alinea perfectamente la tarjeta de texto y la imagen.
+4. Galería "Nuestras Rutas": GRID. Permite establecer una cuadrícula rígida de 3 columnas (repeat(3, 1fr)) en escritorio.
+5. Reservas (Layout general): GRID. Permite establecer una proporción exacta de 2:1 (2fr 1fr) entre el formulario principal y el bloque de contacto lateral.
+6. Fila del Formulario (Documento y Celular): FLEXBOX. Permite que en móvil los campos se apilen en columna y en tablet/escritorio se coloquen horizontalmente compartiendo el espacio disponible (flex: 1).
+7. Contenido interno de Tarjetas: FLEXBOX (flex-direction: column). Permite usar flex-grow / justify-content: space-between para que el botón "Reservar" quede siempre alineado al final sin importar la cantidad de texto descriptivo.
 
 
-4. MEDICIÓN DEL MODELO DE CAJA EN TARJETAS (MINIRETO 11):
-------------------------------------------------------------
-Medición realizada en DevTools (Computed) sobre la tarjeta <article class="tarjeta">:
-- Ancho asignado / disponible: 100% del main (~976px)
-- Padding: 32px (2rem) a izquierda y derecha.
-- Borde: 1px a izquierda y derecha.
-
-a) Con box-sizing: content-box:
-   Ancho Total = Ancho del Contenido (976px) + Padding (64px) + Bordes (2px) = 1042px.
-   Resultado: Desbordamiento horizontal del contenedor padre.
-
-b) Con box-sizing: border-box:
-   Ancho Total = 976px exactos. El padding y el borde se absorben internamente.
-   Resultado: Ajuste perfecto y alineado.
+4. TRES PROBLEMAS RESPONSIVE ENCONTRADOS Y SU SOLUCIÓN (MINIRETO 4):
+--------------------------------------------------------------------
+1. Problema: En pantallas de 360 px, las tablas de tarifas generaban un scroll horizontal indeseado al desbordar el contenedor.
+   Solución: Se redujo el tamaño de fuente (0.9rem) y el padding interno de las celdas (0.5rem 0.4rem) en la versión móvil base de styles.css.
+2. Problema: El botón flotante de WhatsApp tapaba el botón "Enviar reserva" al llegar al final del formulario en celulares.
+   Solución: Se agregó un padding-bottom de 5rem al elemento <main> para asegurar espacio suficiente al hacer scroll al fondo.
+3. Problema: Las imágenes de la flota perdían su proporción al reducir el ancho de pantalla.
+   Solución: Se fijó una altura estandarizada de height: 180px con object-fit: cover en las tarjetas.
 
 
-5. RESUMEN DE CONSTRUCCIÓN SEMANAL (MINIRETO 12):
---------------------------------------------------
-- MiniReto 1: Estructura de carpetas, HTML base y primer commit.
-- MiniReto 2: Contenido de inicio jerarquizado con encabezados y listas.
-- MiniReto 3: Tablas accesibles de tarifas y recorridos con rutas relativas.
-- MiniReto 4: Integración del sitio navegable con menú y pie común.
-- MiniReto 5: Reestructuración 100% semántica (header, nav, main, article, aside, footer).
-- MiniReto 6: Construcción del formulario de reserva por grupos de datos.
-- MiniReto 7: Validación nativa con HTML5 (pattern, min, max, minlength) y prueba de teclado.
-- MiniReto 8: Auditoría WCAG, mapa de color e inicialización en GitHub Pages.
-- MiniReto 9: Hoja externa styles.css, variables globales y fuentes de Google Fonts.
-- MiniReto 10: Estilos de navegación, resolución de especificidad y estados :hover/:focus.
-- MiniReto 11: Aplicación del Box Model (border-box, padding, rem, centrado de main).
-- MiniReto 12: Posicionamiento (badge absolute en tarjeta y botón flotante de WhatsApp fixed), revisión final y lanzamiento de v1.0.
-
-
-6. PROPUESTAS DE MEJORA PARA LA SEMANA 2:
-------------------------------------------
-1. Implementar diseño responsivo mediante CSS Flexbox, Grid y Media Queries para adaptar el sitio a dispositivos móviles y tablets.
-2. Migrar la maquetación CSS a un framework moderno como Bootstrap para acelerar el desarrollo del diseño adaptativo.
-3. Incorporar validación dinámica con JavaScript para ofrecer retroalimentación visual inmediata en los campos del formulario.
-
-
-7. ENLACE DE PUBLICACIÓN FINAL:
---------------------------------
+5. ENLACE DE PUBLICACIÓN EN GITHUB PAGES (v1.5):
+------------------------------------------------
 https://<tu-usuario-github>.github.io/rueda-libre/
