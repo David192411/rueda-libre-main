@@ -1,10 +1,9 @@
 CSS
 
 /* ==========================================================================
-   1. VARIABLES GLOBALES
+   1. VARIABLES GLOBALES DE MARCA
    ========================================================================== */
 :root {
-  /* Paleta de colores de marca */
   --verde-ruta: #1E7A4F;
   --naranja-pedal: #F39A2B;
   --azul-noche: #14213D;
@@ -12,186 +11,38 @@ CSS
   --gris-asfalto: #5B6470;
   --blanco: #FFFFFF;
 
-  /* Tipografías */
   --fuente-titulos: 'Montserrat', sans-serif;
   --fuente-cuerpo: 'Open Sans', sans-serif;
-
-  /* Escala de espaciado */
-  --espacio-sm: 0.5rem;   /* 8px */
-  --espacio-md: 1rem;     /* 16px */
-  --espacio-lg: 2rem;     /* 32px */
-  --espacio-xl: 3rem;     /* 48px */
 }
 
 /* ==========================================================================
-   2. ESTILOS BASE (MOBILE-FIRST - SÓLO 1 COLUMNA)
+   2. REGLAS BASE DE IDENTIDAD VISUAL
    ========================================================================== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  padding: 0;
   font-family: var(--fuente-cuerpo);
-  font-weight: 400;
   color: var(--gris-asfalto);
   background-color: var(--crema);
-  line-height: 1.6;
-}
-
-/* Imágenes fluidas: ninguna se sale de su contenedor */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--fuente-titulos);
   font-weight: 700;
   color: var(--azul-noche);
-  margin-top: 0;
-  margin-bottom: var(--espacio-md);
 }
 
-main {
-  max-width: 75rem; /* ~1200px */
-  margin: 0 auto;
-  padding: var(--espacio-md);
-  padding-bottom: 5rem;
-}
-
-/* ==========================================================================
-   3. CABECERA Y PIE EN MÓVIL (FLEXBOX EN COLUMNA)
-   ========================================================================== */
-header {
-  background-color: var(--azul-noche);
-  color: var(--blanco);
-  padding: var(--espacio-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--espacio-md);
-}
-
-header h1 {
-  color: var(--blanco);
-  margin: 0;
-}
-
-/* Menú Flexbox responsivo sin inline-block ni márgenes fijos */
-#menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--espacio-sm);
-}
-
-#menu a {
-  color: var(--crema);
-  text-decoration: none;
-  font-weight: 600;
-  padding: var(--espacio-sm) var(--espacio-md);
-  border-radius: 4px;
-  display: inline-block;
-}
-
-#menu a:hover,
-#menu a:focus {
-  color: var(--naranja-pedal);
-  background-color: rgba(255, 255, 255, 0.1);
-  outline: 2px solid var(--naranja-pedal);
-}
-
-#menu a.activo {
-  color: var(--verde-ruta);
-  background-color: var(--crema);
-  font-weight: 700;
-}
-
-/* Footer Flexbox en Móvil */
-footer {
-  background-color: var(--azul-noche);
-  color: var(--crema);
-  padding: var(--espacio-lg) var(--espacio-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--espacio-md);
-  align-items: center;
-  text-align: center;
-}
-
-footer div {
-  flex: 1;
-}
-
-/* ==========================================================================
-   4. SECCIONES Y TARJETAS EN MÓVIL
-   ========================================================================== */
-.portada-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--espacio-lg);
-  align-items: center;
-}
-
-.portada-img {
-  width: 100%;
-  min-height: 250px;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* Cuadrícula de Rutas (Galeria) */
-.rutas-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--espacio-lg);
-}
-
-/* Cuadrícula de la Flota (MiniReto 2): auto-fit sin media queries */
-.flota-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--espacio-lg);
-}
-
+/* Ajustes de marca para tarjetas (preservando estilos de la semana 1) */
 .tarjeta {
   position: relative;
   background-color: var(--blanco);
   border: 1px solid rgba(20, 33, 61, 0.1);
   border-radius: 8px;
-  padding: var(--espacio-lg);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Alinea el botón al final de la tarjeta */
-}
-
-.tarjeta-cuerpo {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espacio-sm);
-  margin-bottom: var(--espacio-md);
-}
-
-.tarjeta img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 4px;
+  padding: 1.5rem;
 }
 
 .badge-nuevo {
   position: absolute;
-  top: var(--espacio-md);
-  right: var(--espacio-md);
+  top: 1rem;
+  right: 1rem;
   background-color: var(--naranja-pedal);
   color: var(--azul-noche);
   font-family: var(--fuente-titulos);
@@ -200,6 +51,7 @@ footer div {
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
   text-transform: uppercase;
+  z-index: 2;
 }
 
 .precio {
@@ -209,19 +61,14 @@ footer div {
   font-size: 1.1rem;
 }
 
+/* Estilos de botones con colores de marca */
 .btn-cta {
-  display: inline-block;
   background-color: var(--verde-ruta);
   color: var(--blanco);
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  text-decoration: none;
   font-family: var(--fuente-titulos);
   font-weight: 700;
   border: none;
-  cursor: pointer;
-  text-align: center;
-  align-self: flex-start;
+  text-decoration: none;
 }
 
 .btn-cta:hover,
@@ -231,11 +78,11 @@ footer div {
   outline: 2px solid var(--naranja-pedal);
 }
 
-/* Enlace flotante WhatsApp */
+/* WhatsApp flotante */
 .whatsapp-float {
   position: fixed;
-  bottom: var(--espacio-lg);
-  right: var(--espacio-lg);
+  bottom: 2rem;
+  right: 2rem;
   background-color: var(--verde-ruta);
   color: var(--blanco);
   padding: 0.75rem 1.25rem;
@@ -253,147 +100,22 @@ footer div {
   outline: 3px solid var(--naranja-pedal);
 }
 
-/* Tablas responsivas en móvil */
+/* Estilos de tablas */
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: var(--espacio-lg);
   background-color: var(--blanco);
-  border: 1px solid var(--gris-asfalto);
-  font-size: 0.9rem;
-}
-
-th, td {
-  padding: 0.5rem 0.4rem;
-  border: 1px solid #ddd;
-  text-align: left;
 }
 
 th {
-  background-color: var(--azul-noche);
-  color: var(--blanco);
+  background-color: var(--azul-noche) !important;
+  color: var(--blanco) !important;
 }
 
-/* ==========================================================================
-   5. FORMULARIO RESPONSIVO (MÓVIL)
-   ========================================================================== */
-.reservas-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--espacio-lg);
+tbody th[scope="row"] {
+  background-color: var(--crema) !important;
+  color: var(--azul-noche) !important;
 }
 
-form {
-  background-color: var(--blanco);
-  padding: var(--espacio-md);
-  border-radius: 8px;
-  border: 1px solid rgba(20, 33, 61, 0.1);
-}
-
-fieldset {
-  border: 1px solid var(--gris-asfalto);
-  border-radius: 6px;
-  padding: var(--espacio-md);
-  margin-bottom: var(--espacio-lg);
-}
-
-legend {
-  font-family: var(--fuente-titulos);
-  font-weight: 700;
-  color: var(--azul-noche);
-  padding: 0 var(--espacio-sm);
-}
-
-form label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  margin-top: var(--espacio-sm);
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="tel"],
-form input[type="date"],
-form input[type="number"],
-form select,
-form textarea {
-  width: 100%;
-  padding: 0.65rem;
-  border: 1px solid var(--gris-asfalto);
-  border-radius: 4px;
-  font-family: var(--fuente-cuerpo);
-  font-size: 1rem;
-}
-
-form input:focus,
-form select:focus,
-form textarea:focus {
-  outline: 3px solid var(--naranja-pedal);
-  border-color: var(--verde-ruta);
-}
-
-form input[type="radio"],
-form input[type="checkbox"] {
-  width: auto;
-  display: inline-block;
-  margin-right: var(--espacio-sm);
-}
-
-/* Fila de campos cortos en el formulario */
-.form-row {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espacio-md);
-}
-
-.form-row .campo-grupo {
-  flex: 1;
-}
-
-/* ==========================================================================
-   6. MEDIA QUERIES (TABLET: >= 768px)
-   ========================================================================== */
-@media (min-width: 768px) {
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  footer {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    text-align: left;
-  }
-
-  .portada-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .form-row {
-    flex-direction: row;
-  }
-
-  table {
-    font-size: 1rem;
-  }
-  
-  th, td {
-    padding: 0.75rem var(--espacio-md);
-  }
-}
-
-/* ==========================================================================
-   7. MEDIA QUERIES (ESCRITORIO: >= 1200px)
-   ========================================================================== */
-@media (min-width: 1200px) {
-  .rutas-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* Distribución de Reservas en proporción 2:1 (MiniReto 3) */
-  .reservas-layout {
-    grid-template-columns: 2fr 1fr;
-  }
+/* Foco visible personalizado en elementos interactivos */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid var(--naranja-pedal) !important;
 }
