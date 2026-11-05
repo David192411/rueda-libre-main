@@ -1,48 +1,40 @@
 Plaintext
 
 ==================================================
-BITÁCORA DE TRABAJO - RUEDA LIBRE (v1.5 MOBILE-FIRST)
+BITÁCORA DE TRABAJO Y CIERRE SEMANA 2 - RUEDA LIBRE (v2.0)
 ==================================================
 
-1. COMPORTAMIENTO DEL ENCABEZADO Y EL PIE SEGÚN ANCHO DE PANTALLA (MINIRETO 1):
--------------------------------------------------------------------------------
-- En pantallas estrechas (< 768px / Celular):
-  * El encabezado se organiza verticalmente (flex-direction: column) con el nombre del negocio arriba y el menú centrado debajo. Los enlaces se ajustan mediante flex-wrap sin desbordar.
-  * El pie de página se muestra en una sola columna vertical apilando marca, contacto y horario.
-- En pantallas anchas (>= 768px / Tablet y Escritorio):
-  * El encabezado pasa a una sola fila (flex-direction: row) con space-between, ubicando la marca a la izquierda y la navegación a la derecha alineados verticalmente.
-  * El pie muestra sus 3 bloques en fila (flex-direction: row) alineados por arriba y distribuidos homogéneamente.
+1. REGISTRO DE CLASES PROPIAS COMPLEMENTARIAS (MINIRETO 12):
+-------------------------------------------------------------
+1. .header-rueda-libre: Personaliza el fondo de la Navbar aplicando el color de marca Azul Noche (#14213D).
+2. .tarjeta-marca: Extiende las cards de Bootstrap agregando elevación sutil al hacer hover y borde personalizado.
+3. .btn-naranja: Variante de botón con el color Naranja Pedal (#F39A2B) y texto en Azul Noche para garantizar contraste WCAG (7.4:1).
 
 
-2. REGISTRO DE COLUMNAS OBSERVADAS EN "NUESTRA FLOTA" (MINIRETO 2):
---------------------------------------------------------------------
-Configuración utilizada: grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) con gap de 2rem.
-- A 1280 px: Se observan 4 columnas por fila (y el 7.º modelo "Tándem" se ubica al inicio de la segunda fila automáticamente).
-- A 900 px: Se observan 3 columnas por fila (con el 7.º modelo centrado al final).
-- A 500 px: Se observa 1 columna por fila (todas las tarjetas apiladas fluidamente).
+2. USOS DE BOOTSTRAP ICONS Y ACCESIBILIDAD (MINIRETO 12):
+----------------------------------------------------------
+1. Navbar: <i class="bi bi-bicycle me-2" aria-hidden="true"></i>
+2. Secciones / Beneficios: <i class="bi bi-shield-check" aria-hidden="true"></i>, <i class="bi bi-geo-alt" aria-hidden="true"></i>
+3. Formulario / Contacto: <i class="bi bi-clock-fill" aria-hidden="true"></i>, <i class="bi bi-envelope" aria-hidden="true"></i>
+4. Enlace WhatsApp: <i class="bi bi-whatsapp" aria-hidden="true"></i> dentro de un enlace con aria-label="Contactar por WhatsApp".
+5. Botón Hamburguesa: <button class="navbar-toggler" aria-label="Abrir menú de navegación">.
+* Nota de accesibilidad: Todos los íconos decorativos llevan aria-hidden="true" para no confundir a los lectores de pantalla.
 
 
-3. JUSTIFICACIÓN DE DECISIONES DE LAYOUT - FLEXBOX VS GRID (MINIRETO 3):
--------------------------------------------------------------------------
-1. Encabezado (<header>): FLEXBOX. Se eligió porque es una distribución lineal (1 dimensión) donde los elementos solo necesitan alineación y separación a los extremos.
-2. Pie de página (<footer>): FLEXBOX. Estructura unidimensional que requería apilar los tres bloques en móvil y disponerlos horizontalmente desde tablet.
-3. Portada (Inicio): GRID. Estructura bidimensional con dos columnas de igual tamaño (1fr 1fr) que alinea perfectamente la tarjeta de texto y la imagen.
-4. Galería "Nuestras Rutas": GRID. Permite establecer una cuadrícula rígida de 3 columnas (repeat(3, 1fr)) en escritorio.
-5. Reservas (Layout general): GRID. Permite establecer una proporción exacta de 2:1 (2fr 1fr) entre el formulario principal y el bloque de contacto lateral.
-6. Fila del Formulario (Documento y Celular): FLEXBOX. Permite que en móvil los campos se apilen en columna y en tablet/escritorio se coloquen horizontalmente compartiendo el espacio disponible (flex: 1).
-7. Contenido interno de Tarjetas: FLEXBOX (flex-direction: column). Permite usar flex-grow / justify-content: space-between para que el botón "Reservar" quede siempre alineado al final sin importar la cantidad de texto descriptivo.
+3. RESUMEN DE LA INTEGRACIÓN DE COMPONENTES DE BOOTSTRAP (MINIRETOS 9, 10, 11 Y 12):
+--------------------------------------------------------------------------------------
+- MiniReto 9: Navbar colapsable con hamburguesa e integración de botones unificados.
+- MiniReto 10: Secciones reconstruidas con .card de igual altura (d-flex flex-column justify-content-between) y carrusel .carousel con auto-rotation.
+- MiniReto 11: Formulario con validación visual (.needs-validation / .invalid-feedback), alerta cerrable (.alert-dismissible) y modal emergente (.modal) con las 5 políticas.
+- MiniReto 12: Sobreescritura de variables globales de Bootstrap (--bs-primary), 3 clases propias, Bootstrap Icons y capturas guardadas en img/capturas/.
 
 
-4. TRES PROBLEMAS RESPONSIVE ENCONTRADOS Y SU SOLUCIÓN (MINIRETO 4):
---------------------------------------------------------------------
-1. Problema: En pantallas de 360 px, las tablas de tarifas generaban un scroll horizontal indeseado al desbordar el contenedor.
-   Solución: Se redujo el tamaño de fuente (0.9rem) y el padding interno de las celdas (0.5rem 0.4rem) en la versión móvil base de styles.css.
-2. Problema: El botón flotante de WhatsApp tapaba el botón "Enviar reserva" al llegar al final del formulario en celulares.
-   Solución: Se agregó un padding-bottom de 5rem al elemento <main> para asegurar espacio suficiente al hacer scroll al fondo.
-3. Problema: Las imágenes de la flota perdían su proporción al reducir el ancho de pantalla.
-   Solución: Se fijó una altura estandarizada de height: 180px con object-fit: cover en las tarjetas.
+4. EVIDENCIA DE CAPTURAS DE PANTALLA GUARDADAS (MINIRETO 12):
+-------------------------------------------------------------
+- img/capturas/antes-personalizar.png (Captura de la versión beta con el azul nativo de Bootstrap).
+- img/capturas/despues-personalizar.png (Captura de la v2.0 final con los colores de marca Verde Ruta y Azul Noche).
 
 
-5. ENLACE DE PUBLICACIÓN EN GITHUB PAGES (v1.5):
-------------------------------------------------
+5. ENLACE PUBLICADO DEL PRODUCTO FINAL DE LA SEMANA 2:
+-----------------------------------------------------
 https://<tu-usuario-github>.github.io/rueda-libre/
