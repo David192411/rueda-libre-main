@@ -4,12 +4,12 @@ CSS
    1. VARIABLES GLOBALES DE MARCA
    ========================================================================== */
 :root {
-  --verde-ruta: #1E7A4F;
-  --naranja-pedal: #F39A2B;
-  --azul-noche: #14213D;
-  --crema: #FAF6EF;
-  --gris-asfalto: #5B6470;
-  --blanco: #FFFFFF;
+  --verde-ruta: #27F568;
+  --naran: #e77f1e;
+  --azul-noche: #1c4295;
+  --crema: #0f2be4;
+  --gris-asfalto: #51f90e;
+  --blanco: #ef22c9;
 
   --fuente-titulos: 'Montserrat', sans-serif;
   --fuente-cuerpo: 'Open Sans', sans-serif;
@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6 {
 .tarjeta {
   position: relative;
   background-color: var(--blanco);
-  border: 1px solid rgba(20, 33, 61, 0.1);
+  border: 1px solid rgba(4, 223, 44, 0.1);
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50px;
   text-decoration: none;
   font-weight: 700;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(244, 245, 245, 0.952);
   z-index: 1000;
 }
 
